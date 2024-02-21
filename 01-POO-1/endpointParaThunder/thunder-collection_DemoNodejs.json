@@ -1,0 +1,165 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "DemoNodejs",
+    "dateExported": "2024-02-21T01:02:18.269Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "7c28bfa6-ef59-42d1-b3b8-b5746b77a197",
+            "colId": "a916fc0e-fdb0-4526-b4e3-cc000e72c291",
+            "containerId": "",
+            "name": "Get nombre",
+            "url": "http://localhost:3000/get/getNombre",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-02-20T23:36:44.025Z",
+            "modified": "2024-02-21T00:44:29.066Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c39b5ae5-7c36-4d05-a52b-cab7d372dd71",
+            "colId": "a916fc0e-fdb0-4526-b4e3-cc000e72c291",
+            "containerId": "",
+            "name": "getApellidoPaterno",
+            "url": "http://localhost:3000/get/getApellidoPaterno",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-02-20T23:37:42.273Z",
+            "modified": "2024-02-21T00:45:28.489Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "6adbfcb3-b075-4748-bd15-0e7c0f6fbbae",
+            "colId": "a916fc0e-fdb0-4526-b4e3-cc000e72c291",
+            "containerId": "",
+            "name": "getApellidoMaterno",
+            "url": "http://localhost:3000/get/getApellidoMaterno",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-02-20T23:37:52.503Z",
+            "modified": "2024-02-21T00:45:38.985Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "91c69784-b34b-4dd5-aded-1399a788a896",
+            "colId": "a916fc0e-fdb0-4526-b4e3-cc000e72c291",
+            "containerId": "",
+            "name": "getEdad",
+            "url": "http://localhost:3000/getEdad",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-02-20T23:37:58.558Z",
+            "modified": "2024-02-20T23:38:24.320Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "29f4e202-6394-4b0c-8d21-881dd1044c3f",
+            "colId": "a916fc0e-fdb0-4526-b4e3-cc000e72c291",
+            "containerId": "",
+            "name": "agregarDireccion",
+            "url": "http://localhost:3000/post/postDireccion",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-02-20T23:58:51.595Z",
+            "modified": "2024-02-21T00:44:13.375Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"direccion\": {\n    \"provincia\": \"Corrientes\",\n    \"localidad\": \"Corrientes\",\n    \"calle\": \"calle false\",\n    \"altura\": \"123\"\n  }\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "770afdd1-8a78-4093-a400-844011beb6f7",
+            "colId": "a916fc0e-fdb0-4526-b4e3-cc000e72c291",
+            "containerId": "",
+            "name": "modificarProvincia",
+            "url": "http://localhost:3000/put/putDireccion/provincia",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2024-02-21T00:07:43.218Z",
+            "modified": "2024-02-21T00:46:06.382Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"provincia\" : \"Chaco\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "0bba3bf5-143b-4dff-a260-18ee292d8576",
+            "colId": "a916fc0e-fdb0-4526-b4e3-cc000e72c291",
+            "containerId": "",
+            "name": "modificarLocalidad",
+            "url": "http://localhost:3000/put/putDireccion/localidad",
+            "method": "PUT",
+            "sortNum": 70000,
+            "created": "2024-02-21T00:50:57.130Z",
+            "modified": "2024-02-21T00:55:22.178Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"localidad\" : \"Resistencia\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "ee16738c-15ce-4eab-8406-a8ab2227f5de",
+            "colId": "a916fc0e-fdb0-4526-b4e3-cc000e72c291",
+            "containerId": "",
+            "name": "modificarCalle",
+            "url": "http://localhost:3000/put/putDireccion/calle",
+            "method": "PUT",
+            "sortNum": 80000,
+            "created": "2024-02-21T00:51:03.863Z",
+            "modified": "2024-02-21T00:55:48.961Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"calle\" : \"Sarmiento\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "63641618-3b2b-478b-8c8d-cbcd3a69ecf9",
+            "colId": "a916fc0e-fdb0-4526-b4e3-cc000e72c291",
+            "containerId": "",
+            "name": "modificarAltura",
+            "url": "http://localhost:3000/put/putDireccion/altura",
+            "method": "PUT",
+            "sortNum": 90000,
+            "created": "2024-02-21T00:51:11.021Z",
+            "modified": "2024-02-21T00:56:09.172Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"altura\" : \"123\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "http://localhost:3000/  "
+        }
+    }
+}
