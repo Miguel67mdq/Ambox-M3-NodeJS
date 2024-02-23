@@ -4,7 +4,7 @@ const jaime = {
   apellidoMaterno: "Velasco",
   edad: 33,
   getNombre: function () {
-    return "Jaime Cervantes Velasco";
+    return `${this.nombre} ${this.apellidoPaterno} ${this.apellidoMaterno}`;
   },
   getApellidoMaterno: function () {
     return this.apellidoMaterno;
@@ -15,7 +15,28 @@ const jaime = {
   getEdad: function () {
     return this.edad;
   },
-  postDireccion: function ({direccion}) {
+  getDireccion: function () {
+    return this?.direccion ? this.direccion : "Aun no tengo direccion";
+  },
+  getProvincia: function () {
+    return this.direccion?.provincia
+      ? this.direccion.provincia
+      : "Aun no tengo provincia";
+  },
+  getLocalidad: function () {
+    return this.direccion?.localidad
+      ? this.direccion.localidad
+      : "Aun no tengo localidad";
+  },
+  getCalle: function () {
+    return this.direccion.calle ? this.direccion.calle : "Aun no tengo calle";
+  },
+  getAltura: function () {
+    return this.direccion?.altura
+      ? this.direccion.altura
+      : "Aun no tengo altura";
+  },
+  postDireccion: function ({ direccion }) {
     this.direccion = direccion;
   },
   putDireccionProvincia: function (provincia) {
@@ -29,6 +50,40 @@ const jaime = {
   },
   putDireccionAltura: function (altura) {
     this.direccion.altura = altura;
+  },
+  putEdad: function (edad) {
+    this.edad = edad;
+  },
+  putNombre: function (nombre) {
+    this.nombre = nombre;
+  },
+  putApellidoPaternbo: function (apellido) {
+    this.apellidoPaterno = apellido;
+  },
+  putApellidoMaterno: function (apellido) {
+    this.apellidoMaterno = apellido;
+  },
+  deleteDireccion: function () {
+    delete this.direccion;
+  },
+  deleteEdad: function () {
+    delete this.edad;
+  },
+  deleteNombre: function () {
+    delete this.nombre;
+  },
+  deleteApellidoMaterno: function () {
+    delete this.apellidoMaterno;
+  },
+  deleteApellidoPaterno: function () {
+    delete this.apellidoPaterno;
+  },
+  recorrerTodosMisDatos: function () {
+    const nombresProps = Object.keys(this);
+    console.log(nombresProps);
+    nombresProps.forEach((nombreProp) => {
+      console.log(jaime[nombreProp]);
+    });
   },
 };
 

@@ -9,6 +9,6 @@ const jaimetDelete = require("./delete");
 router.use("/get", jaimeGet);
 router.use("/post", jaimePost);
 router.use("/put", jaimePut);
-router.use("/delete", jaimetDelete);
+router.use("/", jaimetDelete);
 
 module.exports = router;
