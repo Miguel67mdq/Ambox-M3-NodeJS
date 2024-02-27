@@ -224,7 +224,8 @@ Aquí hay un ejemplo simple de cómo se pueden definir y utilizar módulos en No
 Supongamos que tienes dos archivos: modulo.js y app.js.
 
 En modulo.js, defines un módulo con algunas funciones y lo exportas:
-``` javascript
+
+```javascript
 function saludar(nombre) {
   console.log(`Hola, ${nombre}!`);
 }
@@ -235,17 +236,20 @@ function despedir(nombre) {
 
 module.exports = {
   saludar,
-  despedir
+  despedir,
 };
 ```
-En app.js, importas el módulo definido en modulo.js y utilizas sus funciones:
-``` javascript
-// app.js
-const modulo = require('./modulo');
 
-modulo.saludar('Juan'); // Salida: Hola, Juan!
-modulo.despedir('Juan'); // Salida: Adiós, Juan!
+En app.js, importas el módulo definido en modulo.js y utilizas sus funciones:
+
+```javascript
+// app.js
+const modulo = require("./modulo");
+
+modulo.saludar("Juan"); // Salida: Hola, Juan!
+modulo.despedir("Juan"); // Salida: Adiós, Juan!
 ```
+
 El sistema de gestión de paquetes npm (Node Package Manager) es una herramienta que facilita la instalación, gestión y compartición de paquetes de código (módulos) en Node.js. npm es el repositorio más grande de paquetes de código abierto del mundo y se utiliza ampliamente en el desarrollo de aplicaciones Node.js.
 
 Aquí hay algunos comandos básicos de npm:
@@ -269,18 +273,19 @@ Son la forma más antigua de manejar operaciones asíncronas en JavaScript y Nod
 Pueden ser propensos a caer en el "Callback Hell" (anidación excesiva de callbacks), lo que dificulta la legibilidad y mantenibilidad del código.
 Ejemplo:
 
-``` javascript
+```javascript
 function operacionAsincronica(callback) {
   setTimeout(() => {
-    console.log('Operación asíncrona completada');
+    console.log("Operación asíncrona completada");
     callback();
   }, 1000);
 }
 
 operacionAsincronica(() => {
-  console.log('Callback llamado después de la operación asíncrona');
+  console.log("Callback llamado después de la operación asíncrona");
 });
 ```
+
 Promesas:
 
 Las promesas representan el resultado eventual de una operación asíncrona.
@@ -289,11 +294,11 @@ Permiten encadenar múltiples operaciones asíncronas de manera más legible.
 Son compatibles con los bloques try-catch para manejar errores de manera más efectiva.
 Ejemplo:
 
-``` javascript
+```javascript
 function operacionAsincronica() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      console.log('Operación asíncrona completada');
+      console.log("Operación asíncrona completada");
       resolve();
     }, 1000);
   });
@@ -301,10 +306,10 @@ function operacionAsincronica() {
 
 operacionAsincronica()
   .then(() => {
-    console.log('Promesa resuelta');
+    console.log("Promesa resuelta");
   })
   .catch((error) => {
-    console.error('Error en la promesa:', error);
+    console.error("Error en la promesa:", error);
   });
 ```
 
@@ -315,11 +320,11 @@ Hace que el código asincrónico sea más legible y fácil de entender, ya que s
 Se basa en la palabra clave async para declarar una función asíncrona y await para esperar la resolución de una promesa dentro de esa función.
 Ejemplo:
 
-``` javascript
+```javascript
 async function operacionAsincronica() {
   return new Promise((resolve) => {
     setTimeout(() => {
-      console.log('Operación asíncrona completada');
+      console.log("Operación asíncrona completada");
       resolve();
     }, 1000);
   });
@@ -328,38 +333,59 @@ async function operacionAsincronica() {
 async function ejecutarOperacion() {
   try {
     await operacionAsincronica();
-    console.log('Operación completada usando async/await');
+    console.log("Operación completada usando async/await");
   } catch (error) {
-    console.error('Error en la operación:', error);
+    console.error("Error en la operación:", error);
   }
 }
 
 ejecutarOperacion();
 ```
+
 Estas son algunas de las formas más comunes de manejar operaciones asíncronas en Node.js. Cada una tiene sus propias ventajas y desventajas, y la elección depende del contexto y las preferencias del desarrollador.
 
 ## Creación de una Aplicación Backend Simple
 
-Configuración de un servidor HTTP básico.
-Manejo de rutas y solicitudes HTTP.
-Integración de middleware para funcionalidades adicionales (p. ej., manejo de errores, análisis de cuerpos de solicitud).
-Pruebas básicas del servidor utilizando herramientas como Postman o curl.
+### Configuración de un servidor HTTP básico.
 
-## Persistencia de Datos con Node.js
+#### Inicializa un proyecto Node.js:
 
-Introducción a las bases de datos NoSQL con MongoDB.
-Uso de Mongoose para interactuar con MongoDB desde una aplicación Node.js.
-Implementación de operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en la aplicación backend.
+Ejecuta
 
-## Conclusiones y Recursos Adicionales
+```bash
+npm init
+```
 
-Resumen de los conceptos aprendidos.
-Recursos adicionales para continuar aprendiendo sobre Node.js.
-Sesión de preguntas y respuestas.
-Recursos Necesarios:
+en tu directorio para inicializar un nuevo proyecto Node.js. Esto creará un archivo package.json donde se gestionarán las dependencias de tu proyecto.
 
-Computadoras con acceso a Internet y capacidad para ejecutar Node.js.
-Editor de texto o IDE de su elección (p. ej., Visual Studio Code, Atom, Sublime Text).
-Instalación previa de Node.js y npm en las computadoras de los participantes.
-Nota:
-Esta sesión introductoria proporciona una visión general de Node.js y sus capacidades básicas. Para un conocimiento más profundo y aplicaciones más avanzadas, se recomienda explorar recursos adicionales y proyectos prácticos.
+#### Instalación de dependencias:
+
+Instala la dependencia http de Node.js, que te permitirá crear un servidor HTTP básico.
+
+```bash
+npm install http
+```
+
+```javascript
+const http = require("http");
+
+const hostname = "127.0.0.1"; // Puedes cambiarlo a tu dirección IP pública si deseas que el servidor sea accesible desde otras máquinas
+const port = 3000; // Puedes cambiar el puerto si lo deseas
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader("Content-Type", "text/plain");
+  res.end("¡Hola, mundo!\n");
+});
+
+server.listen(port, hostname, () => {
+  console.log(`Servidor corriendo en http://${hostname}:${port}/`);
+});
+```
+
+Ejecuta tu servidor:
+Ejecuta tu servidor Node.js utilizando el siguiente comando en tu terminal:
+
+```bash
+node server.js
+```
