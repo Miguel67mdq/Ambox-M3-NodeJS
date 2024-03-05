@@ -1,15 +1,22 @@
-const express = require('express'); 
-const bodyParser = require('body-parser'); 
+const http = require("http");
+const morgan = require("morgan");
+const Listen_Port = 3000;
+var finalhandler = require("finalhandler");
 
-const app = express(); 
+const logger = morgan("dev");
 
-app.use(express.static('public')); 
+const server = http.createServer(function (req, res) {
+  var done = finalhandler(req, res)
+  logger(req, res, function (err) {
+    if (err) return done(err)
 
-app.use(bodyParser.urlencoded({ extended: false })); 
-app.use(bodyParser.json());
+    // respond to request
+    res.setHeader('content-type', 'text/plain')
+    res.end('hello, world!')
+  })
+})
 
-const Listen_Port = 3000; 
 
-app.listen(Listen_Port, function() {
-    console.log('Server corriendo http://localhost:' + Listen_Port + '/');
+server.listen(Listen_Port, () => {
+  console.log(`Server listens on port ${Listen_Port}`);
 });
