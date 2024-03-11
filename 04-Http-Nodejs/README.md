@@ -22,7 +22,6 @@ El módulo http también permite hacer solicitudes HTTP desde una aplicación No
 Con http.request(), puedes realizar solicitudes GET, POST, PUT, DELETE y otras, especificando la URL de destino, los encabezados y el cuerpo de la solicitud si es necesario.
 Además, http.request() proporciona métodos para manejar eventos como la recepción de datos de respuesta, errores de solicitud y el final de la respuesta.
 En resumen, el módulo http en Node.js es esencial para la comunicación HTTP en ambas direcciones: la creación de servidores para manejar solicitudes entrantes y la creación de clientes para realizar solicitudes salientes. Esta funcionalidad es clave para el desarrollo de aplicaciones web, APIs RESTful, servicios web y más en Node.js.
-302692
 
 ### Importancia del módulo http en el desarrollo web con Node.js.
 
