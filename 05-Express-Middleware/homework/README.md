@@ -32,7 +32,7 @@ Cada `Post` va a ser un objeto con la siguiente estructura:
 ```
 Tanto `title` como `contents` van a ser del tipo String.
 
-Desarrollar las siguientes cinco rutas dentro del archivo `server.js` de la carpeta `src`
+Desarrollar las siguientes cinco rutas dentro del archivo `index.js` de la carpeta `src`
 
 ### Breve repaso de creación de rutas
 
