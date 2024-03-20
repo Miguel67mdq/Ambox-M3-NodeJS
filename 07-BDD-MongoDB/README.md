@@ -96,6 +96,7 @@ brew services start mongodb-community
 ```
 
 3. Esto iniciará el servidor de MongoDB y lo dejará en funcionamiento en segundo plano. Si el servidor se inicia correctamente, verás un mensaje indicando que el servicio se inició correctamente.
+
 ### Linux (Ubuntu):
 
 1. Abre Terminal.
@@ -109,10 +110,12 @@ sudo service mongod start
 
 Una vez que el servidor de MongoDB esté en funcionamiento, puedes conectarte a él desde la línea de comandos o desde tu aplicación Node.js utilizando la biblioteca de controladores de MongoDB. Recuerda que si necesitas detener el servidor de MongoDB en cualquier momento, puedes hacerlo usando los comandos apropiados para tu sistema operativo:
 
-- Windows: Puedes cerrar la ventana de la línea de comandos donde se está ejecutando el servidor, o puedes usar el comando 
+- Windows: Puedes cerrar la ventana de la línea de comandos donde se está ejecutando el servidor, o puedes usar el comando
+
 ```bash
 mongod.exe --shutdown.
 ```
+
 - macOS y Linux (Ubuntu): Puedes detener el servidor ejecutando el siguiente comando en Terminal:
 
 ```bash
@@ -129,7 +132,7 @@ MongoDB es una base de datos NoSQL que utiliza un modelo de documentos para alma
 
 3. Campos: Los campos en un documento MongoDB son las claves (nombres de las propiedades) y los valores asociados. Los campos pueden ser de diferentes tipos de datos, como cadenas de texto, números, booleanos, fechas, matrices o incluso otros documentos anidados.
 
-4. ID del documento (_id): Cada documento en una colección MongoDB debe tener un campo especial llamado _id, que actúa como identificador único para ese documento dentro de la colección. Si no se proporciona un valor para _id, MongoDB generará automáticamente un valor único para él.
+4. ID del documento (\_id): Cada documento en una colección MongoDB debe tener un campo especial llamado \_id, que actúa como identificador único para ese documento dentro de la colección. Si no se proporciona un valor para \_id, MongoDB generará automáticamente un valor único para él.
 
 5. Consulta: MongoDB ofrece una amplia gama de operadores de consulta para buscar documentos en una colección. Puedes realizar consultas para encontrar documentos que coincidan con ciertos criterios de búsqueda, utilizando operadores de comparación, lógicos, de conjunto, etc.
 
@@ -184,11 +187,118 @@ En resumen, en MongoDB, las colecciones son grupos de documentos relacionados y 
 
 ## Introducción a los comandos básicos de MongoDB, como insert, find, update, delete, etc.
 
+1. Insertar documentos (insertOne() y insertMany())
+
+- `insertOne(documento)`: Inserta un solo documento en una colección.
+- `insertMany([documento1, documento2, ...])`: Inserta múltiples documentos en una colección.
+
+```javascript
+db.miColeccion.insertOne({ nombre: "Ejemplo", edad: 30 });
+db.miColeccion.insertMany([
+  { nombre: "Persona1", edad: 25 },
+  { nombre: "Persona2", edad: 35 },
+]);
+```
+
+2. Buscar documentos (find())
+
+- find(filtro): Busca documentos en una colección que coincidan con el filtro especificado. Si no se proporciona ningún filtro, devuelve todos los documentos de la colección.
+
+```javascript
+db.miColeccion.find({ edad: { $gt: 25 } }); // Encuentra documentos donde la edad es mayor que 25
+```
+
+3. Actualizar documentos (updateOne() y updateMany())
+
+- updateOne(filtro, actualización): Actualiza un solo documento que coincida con el filtro especificado.
+- updateMany(filtro, actualización): Actualiza múltiples documentos que coincidan con el filtro especificado.
+
+```javascript
+db.miColeccion.updateOne({ nombre: "Ejemplo" }, { $set: { edad: 35 } }); // Actualiza la edad del documento con nombre "Ejemplo" a 35
+```
+
+4. Eliminar documentos (deleteOne() y deleteMany())
+
+- deleteOne(filtro): Elimina un solo documento que coincida con el filtro especificado.
+- deleteMany(filtro): Elimina múltiples documentos que coincidan con el filtro especificado.
+
+```javascript
+db.miColeccion.deleteOne({ nombre: "Persona1" }); // Elimina el documento con nombre "Persona1"
+```
+
+5. Contar documentos (count() y countDocuments())
+
+- count(): Devuelve el número total de documentos en una colección.
+- countDocuments(filtro): Devuelve el número de documentos que coinciden con el filtro especificado.
+
+```javascript
+db.miColeccion.count(); // Devuelve el número total de documentos en la colección
+db.miColeccion.countDocuments({ edad: { $gt: 30 } }); // Devuelve el número de documentos con edad mayor que 30
+```
+
+Recuerda que estos son solo algunos de los comandos básicos de MongoDB. La biblioteca de controladores MongoDB proporciona una amplia gama de métodos para interactuar con la base de datos, permitiéndote realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) y muchas más.
+
 # Conexión a MongoDB desde Node.js
 
-## Instalación del paquete mongodb utilizando npm.
+Para conectarse a MongoDB desde una aplicación Node.js, necesitarás usar un controlador de MongoDB. El controlador oficial de MongoDB para Node.js se llama mongodb y se puede instalar a través de npm. Aquí tienes los pasos básicos para conectarte a MongoDB desde Node.js:
 
-## Configuración de la conexión a la base de datos MongoDB desde una aplicación Node.js.
+1. `Instalar el controlador de MongoDB:`
+   Antes que nada, asegúrate de tener npm instalado en tu sistema. Luego, puedes instalar el controlador de MongoDB ejecutando el siguiente comando en la terminal:
+
+```bash
+npm install mongodb
+```
+
+2. `Importar el módulo de MongoDB en tu aplicación:`
+   En tu archivo de script de Node.js, importa el módulo de MongoDB:
+
+```javascript
+const { MongoClient } = require("mongodb");
+```
+
+3. `Establecer la conexión a la base de datos:`
+   Para conectarte a tu base de datos MongoDB, utiliza el método connect proporcionado por el controlador de MongoDB. Este método acepta la URL de conexión de MongoDB y algunas opciones adicionales, y devuelve un objeto MongoClient que puedes usar para realizar operaciones en la base de datos.
+
+```javascript
+const url = "mongodb://localhost:27017"; // URL de conexión de MongoDB
+const dbName = "miBaseDeDatos"; // Nombre de la base de datos
+
+MongoClient.connect(
+  url,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  (err, client) => {
+    if (err) {
+      console.error("Error al conectarse a MongoDB:", err);
+      return;
+    }
+
+    console.log("Conexión establecida correctamente a MongoDB");
+
+    const db = client.db(dbName);
+
+    // A partir de aquí, puedes realizar operaciones en la base de datos utilizando el objeto `db`
+  }
+);
+```
+
+4. `Realizar operaciones en la base de datos:`
+Una vez que te hayas conectado correctamente a MongoDB, puedes utilizar el objeto db para realizar operaciones en la base de datos, como insertar documentos, buscar documentos, actualizar documentos, eliminar documentos, etc.
+
+```javascript
+
+// Ejemplo de inserción de un documento en una colección
+const collection = db.collection('miColeccion');
+collection.insertOne({ nombre: 'Ejemplo', edad: 30 }, (err, result) => {
+if (err) {
+console.error('Error al insertar documento:', err);
+return;
+}
+console.log('Documento insertado correctamente:', result.insertedId);
+});
+```
+Recuerda que la URL de conexión (`mongodb://localhost:27017`) y el nombre de la base de datos (`miBaseDeDatos`) pueden variar dependiendo de tu configuración de MongoDB. Asegúrate de ajustarlos según corresponda.
+
+
 
 ## Ejemplos de cómo realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) utilizando Node.js con MongoDB.
 
@@ -198,8 +308,3 @@ En resumen, en MongoDB, las colecciones son grupos de documentos relacionados y 
 
 ## Ejemplos de consultas más complejas utilizando Node.js.
 
-# Cierre y recursos adicionales
-
-## Resumen de los conceptos aprendidos durante la sesión.
-
-## Recursos adicionales para seguir aprendiendo sobre MongoDB y Node.js, como documentación oficial, tutoriales en línea, etc.
