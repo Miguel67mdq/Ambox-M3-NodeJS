@@ -187,7 +187,7 @@ En resumen, en MongoDB, las colecciones son grupos de documentos relacionados y 
 
 ## Introducción a los comandos básicos de MongoDB, como insert, find, update, delete, etc.
 
-1. Insertar documentos (insertOne() y insertMany())
+1. Insertar documentos (insertOne() y insertMany())express myapp -e
 
 - `insertOne(documento)`: Inserta un solo documento en una colección.
 - `insertMany([documento1, documento2, ...])`: Inserta múltiples documentos en una colección.
