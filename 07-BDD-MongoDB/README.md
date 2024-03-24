@@ -55,7 +55,7 @@ brew install mongodb-community
 brew services start mongodb-community en una terminal.
 ```
 
-Linux (Ubuntu):
+## Linux (Ubuntu):
 
 1. Para instalar MongoDB en Ubuntu, primero importa la clave pública utilizada por el sistema de gestión de paquetes:
 
@@ -282,23 +282,21 @@ MongoClient.connect(
 ```
 
 4. `Realizar operaciones en la base de datos:`
-Una vez que te hayas conectado correctamente a MongoDB, puedes utilizar el objeto db para realizar operaciones en la base de datos, como insertar documentos, buscar documentos, actualizar documentos, eliminar documentos, etc.
+   Una vez que te hayas conectado correctamente a MongoDB, puedes utilizar el objeto db para realizar operaciones en la base de datos, como insertar documentos, buscar documentos, actualizar documentos, eliminar documentos, etc.
 
 ```javascript
-
 // Ejemplo de inserción de un documento en una colección
-const collection = db.collection('miColeccion');
-collection.insertOne({ nombre: 'Ejemplo', edad: 30 }, (err, result) => {
-if (err) {
-console.error('Error al insertar documento:', err);
-return;
-}
-console.log('Documento insertado correctamente:', result.insertedId);
+const collection = db.collection("miColeccion");
+collection.insertOne({ nombre: "Ejemplo", edad: 30 }, (err, result) => {
+  if (err) {
+    console.error("Error al insertar documento:", err);
+    return;
+  }
+  console.log("Documento insertado correctamente:", result.insertedId);
 });
 ```
+
 Recuerda que la URL de conexión (`mongodb://localhost:27017`) y el nombre de la base de datos (`miBaseDeDatos`) pueden variar dependiendo de tu configuración de MongoDB. Asegúrate de ajustarlos según corresponda.
-
-
 
 ## Ejemplos de cómo realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) utilizando Node.js con MongoDB.
 
@@ -307,4 +305,3 @@ Recuerda que la URL de conexión (`mongodb://localhost:27017`) y el nombre de la
 ## Introducción a las consultas avanzadas en MongoDB, incluyendo operadores de comparación, lógicos, de conjunto, etc.
 
 ## Ejemplos de consultas más complejas utilizando Node.js.
-

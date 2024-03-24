@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="/javascripts/index.js"></script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+      <label for="title">Titulo de la publicación</label>
+      <input id="title" name="title" type="text" value="<%= post.title %>" />
+      <label for="contents">Contenido de la publicación</label>
+      <input id="contents" name="contents" type="text" value="<%= post.contents %>">
+      <button onclick="updatePost('<%= post.id %>')">Actualizar post</button>
+  </body>
+</html>
