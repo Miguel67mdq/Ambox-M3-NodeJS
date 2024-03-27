@@ -153,7 +153,7 @@ Finalmente, creamos un modelo llamado Producto utilizando el método mongoose.mo
 
 ## Uso de Modelos en Mongoose
 
-Una vez que hemos definido un esquema en Mongoose, podemos utilizarlo para crear modelos que representen instancias específicas de documentos en nuestra base de datos. Los modelos proporcionan métodos para realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en los documentos de la colección asociada.
+Una vez que hemos definido un esquema en Mongoose, podemos utilizarlo para crear modelos que representen instancias específicas de documentos en nuestra base de datos. Los modelos proporcionan métodos para realizar operaciones CRUD (Create, Read, Update, Delete) en los documentos de la colección asociada.
 
 Aquí tienes un ejemplo de cómo podemos utilizar el modelo Producto que definimos anteriormente para realizar operaciones CRUD:
 
